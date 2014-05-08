@@ -18,7 +18,7 @@
 			<gap:platform name="android" />
 			
 			<!-- Specify orientation to be landscape only. -->
-			<preference name="Orientation" value="landscape" />
+			<preference name="orientation" value="landscape" />
 			
 			<!-- Preferences for global platform. -->
 			<preference name="phonegap-version" value="3.3.0" />
