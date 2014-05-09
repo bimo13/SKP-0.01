@@ -13,6 +13,7 @@
         
         <!-- Custom styles for index.html -->
     	<link href="includes/css/index.css" rel="stylesheet">
+        <link href="includes/css/dialogs.css" rel="stylesheet">
         
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -94,6 +95,39 @@
             
         </div>
         
+        <!-- Dialogs -->
+        <div class="modal fade" id="AppDialogs" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myDialogs" aria-hidden="true">
+        	<div class="modal-dialog">
+                <div class="modal-content">
+                	<div class="modal-header">
+                    	<h4 class="modal-title" id="myDialogs"></h4>
+                    </div>
+                    <div class="modal-body">
+                        <p class="alert" id="myDialogsText"></p>
+                    </div>
+                    <div class="modal-footer" id="myDialogsFoot">
+                    	<button type="button" class="btn btn-default" id="button-DialogYes"><span class="glyphicon glyphicon-ok"></span> Yes</button>
+                        <button type="button" class="btn btn-default" id="button-DialogNo"><span class="glyphicon glyphicon-remove"></span> No</button>
+                        <button type="button" class="btn btn-default" id="button-DialogClose"><span class="glyphicon glyphicon-remove"></span> Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- "Please Wait" Dialog -->
+        <div class="modal fade" id="pleasewait" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myWaitingModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                    	<h4 class="modal-title" id="myWaitingModal">Please wait...</h4>
+                    	<div class="progress progress-striped active">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <script src="cordova.js" type="text/javascript"></script>
         <script src="includes/js/jquery-1.11.0.min.js" type="text/javascript"></script>
         <script src="includes/js/jquery.validate.min.js" type="text/javascript"></script>
@@ -132,6 +166,9 @@
         <script>
         	
         	function submitSurvey(){
+				
+				$("#pleasewait").modal();
+				
 				var id		=	GetURLParameter("id");
 				var opt10	=	$("#opt10").val();
 				var opt11	=	$("#opt11").val();
@@ -151,6 +188,7 @@
 					},
 					function(data){
 						if(data['status'] != 1){
+							$("#pleasewait").modal("hide");
 							alert(data['message']);
 						}else{
 							setTimeout(function(){
@@ -164,6 +202,8 @@
 			}
 			
         </script>
+        
+        <script src="includes/js/func-closeApp.js" type="text/javascript"></script>
         
     </body>
     

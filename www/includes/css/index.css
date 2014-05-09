@@ -12,14 +12,14 @@
 	
 	color: #FD0E5F;
 	
-	z-index: 1302;
+	z-index: 2;
 }
 
 .frm-tagline{
 	margin-top: -30px;
 	margin-bottom: 30px;
 	
-	z-index: 1301;
+	z-index: 1;
 }
 
 .frm-quest{
